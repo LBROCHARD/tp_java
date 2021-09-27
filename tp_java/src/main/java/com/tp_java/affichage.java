@@ -7,24 +7,28 @@ import java.io.IOException;
 public class affichage {
     
     public static int Menue(){
-        System.out.println("Do you want to play :");
-        System.out.println("1. online ");
-        System.out.println("2. local ");
+        affichage.Print("Do you want to play :");
+        affichage.Print("1. online ");
+        affichage.Print("2. local ");
 
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         try {
             int awnser =Integer.parseInt(br.readLine());  
-            
+
             if(awnser == 1 || awnser == 2){
                 return awnser;
             } else {
-                System.err.println("this choice is not correct");
+                affichage.PrintError("Awnser must be in the list");
                 return Menue();
             }
 
+        } catch(NumberFormatException e) {
+            affichage.PrintError("Awnser must be a number : " + e.getMessage() );
+            return Menue();
+
         } catch(IOException e) {
-            System.err.println("this awnser is wrong" + e.getMessage() );
+            affichage.PrintError("Error : " + e.getMessage() );
             return Menue();
         }
 
@@ -32,22 +36,23 @@ public class affichage {
 
     }
 
-    public static void Show(){
-        System.out.println("show");
+    public static void Print(String message){
+        System.out.println(message);
+    }
 
+    public static void PrintError(String message){
+        System.out.println("ERROR :" + message);
     }
 
     public static void BoardAndAsk(){
-        System.out.println("|        |");
-        System.out.println("|        |");
-        System.out.println("|        |");
-        System.out.println("|        |");
-        System.out.println("|        |");
-        System.out.println("|        |");
-        System.out.println("----------");
-        System.out.println(" 12345678 ");
+        affichage.Print("|        |");
+        affichage.Print("|        |");
+        affichage.Print("|        |");
+        affichage.Print("|        |");
+        affichage.Print("|        |");
+        affichage.Print("|        |");
+        affichage.Print("----------");
+        affichage.Print(" 12345678 ");
 
-
-        
     }
 }
