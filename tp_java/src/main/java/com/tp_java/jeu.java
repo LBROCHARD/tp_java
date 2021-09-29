@@ -56,6 +56,7 @@ public class jeu {
 
     public static void Local(){
         affichage.Print("launching local mod ");
+        plateau plateau = new plateau();
         color = RandomPlayer();
         affichage.Print("the first player is : " + color);
     }
@@ -81,8 +82,10 @@ public class jeu {
     }
 
     public static void Tour(){
+        affichage.Print("c'est le tour du joueur " + color);
+        affichage.ShowBoard();
+        int column = affichage.AskColumn();
 
-        
     }
 
 }
