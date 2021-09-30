@@ -70,7 +70,7 @@ public class Affichage {
     }
 
     public static int AskColumn(){
-        Print("qu'elle colone voulez remplir ?");
+        Print("qu'elle colone voulez vous remplir ?");
 
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
@@ -78,7 +78,7 @@ public class Affichage {
             int awnser = Integer.parseInt(br.readLine());  
 
             if(awnser <= 8 && awnser > 0) {
-                if (Jeu.plateau.IsColonneFull(awnser) == false) {
+                if (Jeu.plateau.IsColonneFull(awnser - 1) == false) {
                     return awnser; 
                 } else {
                     Affichage.PrintError("This column is full");
