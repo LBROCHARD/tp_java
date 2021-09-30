@@ -3,6 +3,7 @@ package com.tp_java;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class affichage {
     
@@ -44,15 +45,43 @@ public class affichage {
         System.out.println("ERROR :" + message);
     }
 
-    public static void BoardAndAsk(){
-        affichage.Print("|        |");
-        affichage.Print("|        |");
-        affichage.Print("|        |");
-        affichage.Print("|        |");
-        affichage.Print("|        |");
-        affichage.Print("|        |");
-        affichage.Print("----------");
-        affichage.Print(" 12345678 ");
+    public static void main(String[] args) {
+		
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		int N = 4;
+		
+		int C = 7;
+		int L = 6;
 
+		char[][] plateau = new char[C][L];
+		
+		for(int x = 0 ; x < C ; x++)
+			for(int y = 0 ; y < L ; y++)
+				plateau[x][y] = '.';
+		
+		int gagnant = 0;
+
+        
+			
+		//affichage du plateau:
+		
+			
+		for(int loop = 0 ; loop < C+2+2*C ; loop++)System.out.print('-');
+		System.out.println();
+			
+		for(int y = 0 ; y < L ; y++){
+			System.out.print('|');
+			for(int x = 0 ; x < C ; x++){
+				System.out.print(" " + plateau[x][y] + " ");
+			}
+			System.out.print('|');
+			System.out.println();
+		}
+			
+		for(int loop = 0 ; loop < C+2+2*C ; loop++)System.out.print('-');
+		System.out.println();
+        
     }
 }
