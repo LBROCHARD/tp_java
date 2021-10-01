@@ -41,6 +41,10 @@ public class affichage {
         System.out.println(message);
     }
 
+    public static void Printf(String message){
+        System.out.print(message);
+    }
+
     public static void PrintError(String message){
         System.out.println("ERROR :" + message);
     }

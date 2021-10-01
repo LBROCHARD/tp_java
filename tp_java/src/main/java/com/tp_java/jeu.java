@@ -9,6 +9,7 @@ import java.util.Random;
 public class jeu {
 
     static String color = "Empty";
+    static plateau plateau ;
     
     public static void Launch(){
         int awnser = affichage.Menue();
@@ -56,8 +57,10 @@ public class jeu {
 
     public static void Local(){
         affichage.Print("launching local mod ");
+        plateau = new Plateau();
         color = RandomPlayer();
         affichage.Print("the first player is : " + color);
+        Tour();
     }
 
     public static String RandomPlayer(){
@@ -81,8 +84,23 @@ public class jeu {
     }
 
     public static void Tour(){
+        affichage.Print("c'est le tour du joueur " + color);
+        affichage.ShowBoard();
+        int column = affichage.AskColumn();
+        plateau.FillColumn(column - 1);
 
-        
+    }
+
+    public static int win(int x, int y) {
+        int i = 1;
+        int colonne = -1;
+        int rang = 1;
+        char symbole = (i%2==1 ? 'X' : 'O');
+         
+		x = colonne-1; y = rang;
+		while(x >= 0 && plateau[x][y] == symbole){ x--;}
+		x = colonne-1;
+		while(x < 0  && plateau[x][y] == symbole){ x++;}
     }
 
 }

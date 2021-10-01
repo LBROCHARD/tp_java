@@ -1,0 +1,25 @@
+Launch :
+
+cd com/tp_java/
+javac affichage.java App.java jeu.java pion.java plateau.java
+cd ../..
+java com.tp_java.App
+
+
+trucs a finir :
+-   est ce que c'est une bonne idée d'avoir un tableau de char ?
+    ça me parait pas très futur-proof 
+
+    x+1 y
+    x+2 y
+    x+3 y ...
+
+    i itération 
+
+    vide/adversaire/victoire = stop
+
+    partir de un pour le pion 
+    
+    pas besoin de faire au dessus 
+
+    x + (0/+1) x i 
