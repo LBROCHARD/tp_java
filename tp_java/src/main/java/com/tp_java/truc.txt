@@ -7,19 +7,27 @@ java com.tp_java.App
 
 
 trucs a finir :
+
 -   est ce que c'est une bonne idée d'avoir un tableau de char ?
-    ça me parait pas très futur-proof 
+    ça me parait pas très futur-proof
 
-    x+1 y
-    x+2 y
-    x+3 y ...
+-   faire un truc resonsive avec la taile du tableau 
 
-    i itération 
 
-    vide/adversaire/victoire = stop
 
-    partir de un pour le pion 
-    
-    pas besoin de faire au dessus 
 
-    x + (0/+1) x i 
+bonne idée pour la verif victoire
+
+x+1 y
+x+2 y
+x+3 y ...
+
+i itération 
+
+vide/adversaire/victoire = stop
+
+partir de un pour le pion 
+
+pas besoin de faire au dessus 
+
+x + (0/+1) x i 
