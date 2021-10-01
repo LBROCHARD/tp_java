@@ -49,6 +49,7 @@ public class affichage {
         System.out.println("ERROR :" + message);
     }
 
+<<<<<<< HEAD
     public static void main(String[] args) {
 		
 		
@@ -87,5 +88,60 @@ public class affichage {
 		for(int loop = 0 ; loop < C+2+2*C ; loop++)System.out.print('-');
 		System.out.println();
         
+=======
+    public static void ShowBoard(){
+        // Affichage.Print("|" + Jeu.plateau.board[0] + "|");
+        // Affichage.Print("|" + Jeu.plateau.board[1] + "|");
+        // Affichage.Print("|" + Jeu.plateau.board[2] + "|");
+        // Affichage.Print("|" + Jeu.plateau.board[3] + "|");
+        // Affichage.Print("|" + Jeu.plateau.board[4] + "|");
+        // Affichage.Print("|" + Jeu.plateau.board[5] + "|");
+        for(int i = 0; i < 6 ; i++) {
+
+            Affichage.Printf("|");
+            for(int ii = 0; ii < 8 ; ii++) {
+
+                Affichage.Printf(String.valueOf(Jeu.plateau.board[i][ii]));
+            }
+            Affichage.Print("|");
+        }
+        Affichage.Print("----------");
+        Affichage.Print(" 12345678 ");
+
+    }
+
+    public static int AskColumn(){
+        Print("qu'elle colone voulez vous remplir ?");
+
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        try {
+            int awnser = Integer.parseInt(br.readLine());  
+
+            if(awnser <= 8 && awnser > 0) {
+                if (Jeu.plateau.IsColonneFull(awnser - 1) == false) {
+                    return awnser; 
+                } else {
+                    Affichage.PrintError("This column is full");
+                    return AskColumn();
+                }
+
+            } else {
+                Affichage.PrintError("Awnser must be beetween 1 and 8");
+                return AskColumn();
+            }
+
+        } catch(NumberFormatException e) {
+            Affichage.PrintError("Awnser must be a number : " + e.getMessage() );
+            return AskColumn();
+
+        } catch(IOException e) {
+            Affichage.PrintError("Error : " + e.getMessage() );
+            return AskColumn();
+
+        }
+
+
+>>>>>>> b9f3acecb9212df7581f5677d46a2027698572c7
     }
 }

@@ -58,8 +58,13 @@ public class jeu {
     public static void Local(){
         affichage.Print("launching local mod ");
         plateau = new Plateau();
+        Affichage.Print("everyone choose is color : Yellow (O) or Red (X)");
         color = RandomPlayer();
+<<<<<<< HEAD
         affichage.Print("the first player is : " + color);
+=======
+        Affichage.Print("the first player is : " + color );
+>>>>>>> b9f3acecb9212df7581f5677d46a2027698572c7
         Tour();
     }
 
@@ -68,13 +73,11 @@ public class jeu {
 		int rndm = r.nextInt((2 - 1) + 1) + 1;
         // double rndm = Math.random()*(2 - 1 + 2 ) + 1;   
         if (rndm == 1) {
-            String color = "Red";
-            return color;
+            return "Red";
 
 
         } else if (rndm == 2) {
-            String color = "Yellow";
-            return color;
+            return "Yellow";
 
         } else {
             affichage.PrintError("error in the selection of player, actually player = " + rndm);
@@ -89,6 +92,24 @@ public class jeu {
         int column = affichage.AskColumn();
         plateau.FillColumn(column - 1);
 
+        if (plateau.Victory() == true) {
+            Affichage.Print("victoire !");
+
+        } else {
+
+            if (plateau.isPlateauFull() == true ){
+                Affichage.Print("draw !");
+
+            } else {
+                if( color == "Yellow") {
+                    color = "Red";
+
+                } else {
+                    color = "Yellow";
+                }
+                Tour();
+            }
+        }
     }
 
     public static int win(int x, int y) {
