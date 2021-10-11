@@ -1,5 +1,6 @@
 package com.tp_java;
 
+
 public class plateau {
     char[] board1 = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
     char[] board2 = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
@@ -46,8 +47,37 @@ public class plateau {
         return true;
     }
 
-    public Boolean Victory(){
-        return false;
+    public void Victory(char symbol, int y , int x){
+        int victory = 0;
+        int somme;
+        somme=-1;
+        
+
+        for(int i = 1; i <= 6*8; i++) {
+            //-->  verticale:
+            while(y < 8 && jeu.plateau.board[x][y] == symbol) {
+                y++;
+                victory++;
+            } if(victory > somme) somme= victory;
+            System.out.print("il y a " + victory + "de" + symbol);
+           
+
+            //-->  horizontale:
+            
+            while(x < 8 && jeu.plateau.board[x][y] == symbol) {
+                x--;
+                victory++;
+            }
+            if(victory > somme) somme= victory;
+            while(x < 6 && jeu.plateau.board[x][y] == symbol) {
+                x++;
+                victory++;
+            }
+            if(victory > somme) somme= victory;
+            System.out.print("il y a " + victory + "de" + symbol);
+            
+        } 
     }
+    
 
 }

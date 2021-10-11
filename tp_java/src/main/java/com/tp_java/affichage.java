@@ -3,7 +3,6 @@ package com.tp_java;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class affichage {
     
@@ -66,16 +65,15 @@ public class affichage {
         }
         affichage.Print("----------");
         affichage.Print(" 12345678 ");
-
     }
-
+    
     public static int AskColumn(){
         Print("qu'elle colone voulez vous remplir ?");
 
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         try {
-            int awnser = Integer.parseInt(br.readLine());     
+            int awnser = Integer.parseInt(br.readLine());  
 
             if(awnser <= 8 && awnser > 0) {
                 if (jeu.plateau.IsColonneFull(awnser - 1) == false) {
@@ -99,21 +97,7 @@ public class affichage {
             return AskColumn();
 
         }
-    }
 
-    public static void Win(){
-        char symbole = (i%2==1 ? 'X' : 'O');
-        //nombre alignés maximal: 
-        int max = 0;
-        int x; int y;
-        int somme;
-        
-        
-        //-->  diagonale HG-BD
-        x = jeu.column-1; y = rang; somme=-1;
-        while(y >= 0 && x >= 0 && jeu.plateau[i][ii] == symbole){ y--; x--; somme++;}
-        x = jeu.column-1; y = rang;
-        while(y < i && x < ii && jeu.plateau[i][ii] == symbole){ y++; x++; somme++;}
-        if(somme > max) max= somme;
+
     }
 }

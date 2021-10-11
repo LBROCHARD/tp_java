@@ -57,10 +57,20 @@ public class jeu {
 
     public static void Local(){
         affichage.Print("launching local mod ");
+
         plateau = new plateau();
         affichage.Print("everyone choose is color : Yellow (O) or Red (X)");
         color = RandomPlayer();
         affichage.Print("the first player is : " + color );
+
+        plateau = new plateau();
+        affichage.Print("everyone choose is color : Yellow (O) or Red (X)");
+        color = RandomPlayer();
+
+        affichage.Print("the first player is : " + color);
+
+        affichage.Print("the first player is : " + color );
+
         Tour();
     }
 
@@ -88,13 +98,20 @@ public class jeu {
         int column = affichage.AskColumn();
         plateau.FillColumn(column - 1);
 
-        if (plateau.Victory() == true) {
-            affichage.Print("victoire !");
+        // if (plateau.Victory() == ) {
 
-        } else {
+        //     affichage.Print("victoire !");
+
+        //     affichage.Print("victoire !");
+
+        // } else {
 
             if (plateau.isPlateauFull() == true ){
+
                 affichage.Print("draw !");
+
+                affichage.Print("draw !");
+
 
             } else {
                 if( color == "Yellow") {
@@ -105,7 +122,8 @@ public class jeu {
                 }
                 Tour();
             }
-        }
+        // }
+
     }
 
 }
