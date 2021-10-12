@@ -32,8 +32,68 @@ public class Affichage {
             return Menue();
         }
 
+    }
 
+    public static int MenueReseau(){
+        Affichage.Print("Do you want to :");
+        Affichage.Print("1. host a game ");
+        Affichage.Print("2. join a game ");
 
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        try {
+            int awnser =Integer.parseInt(br.readLine());  
+
+            if(awnser == 1 || awnser == 2){
+                return awnser;
+            } else {
+                Affichage.PrintError("Awnser must be in the list");
+                return MenueReseau();
+            }
+
+        } catch(NumberFormatException e) {
+            Affichage.PrintError("Awnser must be a number : " + e.getMessage() );
+            return MenueReseau();
+
+        } catch(IOException e) {
+            Affichage.PrintError("Error : " + e.getMessage() );
+            return MenueReseau();
+        }
+
+    }
+
+    public static int AskIP(){
+        Affichage.Print("Enter the address to join :");
+
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        try {
+            int awnser =Integer.parseInt(br.readLine());  
+            return awnser;
+
+        } catch(NumberFormatException e) {
+            Affichage.PrintError("Awnser must be a number : " + e.getMessage() );
+            return MenueReseau();
+
+        } catch(IOException e) {
+            Affichage.PrintError("Error : " + e.getMessage() );
+            return MenueReseau();
+        }
+
+    }
+
+    public static String AskMessage(){
+        try {
+            Print("<<");
+            InputStreamReader isr = new InputStreamReader(System.in);
+            BufferedReader br = new BufferedReader(isr);
+            String input = br.readLine();
+            return input;
+
+        } catch (IOException e) {
+            PrintError("Can't ask message");
+            return AskMessage();
+        }
     }
 
     public static void Print(String message){
@@ -45,16 +105,11 @@ public class Affichage {
     }
 
     public static void PrintError(String message){
-        System.out.println("ERROR :" + message);
+        System.out.println("ERROR : " + message);
     }
 
     public static void ShowBoard(){
-        // Affichage.Print("|" + Jeu.plateau.board[0] + "|");
-        // Affichage.Print("|" + Jeu.plateau.board[1] + "|");
-        // Affichage.Print("|" + Jeu.plateau.board[2] + "|");
-        // Affichage.Print("|" + Jeu.plateau.board[3] + "|");
-        // Affichage.Print("|" + Jeu.plateau.board[4] + "|");
-        // Affichage.Print("|" + Jeu.plateau.board[5] + "|");
+
         for(int i = 0; i < 6 ; i++) {
 
             Affichage.Printf("|");

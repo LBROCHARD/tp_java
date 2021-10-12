@@ -15,44 +15,14 @@ public class Jeu {
         int awnser = Affichage.Menue();
 
         if(awnser == 1){
-            Reseau();
+            LaunchReseau();
         } else {
             Local();
         }
     }
 
-    public static void Reseau(){
-        Affichage.Print("! Online is a work in progress !");
-        Affichage.Print("please select something else in the menu");
-        Launch();
-
-    }
-
-    private static void HostGame(){
-        try {
-            Affichage.Print("Hosting a game ...");
-            ServerSocketChannel serverSocket = ServerSocketChannel.open();
-            serverSocket.socket().bind(new InetSocketAddress(8000));
-            SocketChannel socketChannel = serverSocket.accept();
-            Affichage.PrintError("Listening on chanell 8000");
-
-
-        } catch (IOException e) {
-            Affichage.PrintError("Error while trying to host game");
-        }
-
-    }
-
-    private static void JoinGame(){
-        try {
-            Affichage.Print("Joining a game ...");
-            SocketChannel clientSocket = SocketChannel.open();
-            clientSocket.connect( new InetSocketAddress("localhost", 8000));
-            Affichage.PrintError("Sucessfully joined a game !");
-
-        } catch (IOException e) {
-            Affichage.PrintError("Error while trying to join game");
-        }
+    public static void LaunchReseau(){
+        Reseau.HubReseau();
     }
 
     public static void Local(){

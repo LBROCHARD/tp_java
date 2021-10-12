@@ -1,11 +1,18 @@
 package com.tp_java;
 
-import com.tp_java.Affichage;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+// import com.tp_java.Affichage;
 
 public class Reseau {
+    static SocketChannel socket = null;
 
     public static void HubReseau(){
-        int awnser = MenueReseau();
+        int awnser = Affichage.MenueReseau();
 
         if(awnser == 1) {
             HostGame();
@@ -31,11 +38,11 @@ public class Reseau {
     }
 
     private static void JoinGame(){
-        int ip = AskIP();
+        int ip = Affichage.AskIP();
         try {
             Affichage.Print("Joining a game at ip = " + ip + " ...");
-            SocketChannel clientSocket = SocketChannel.open();
-            clientSocket.connect( new InetSocketAddress(ip, 8000));
+            socket = SocketChannel.open();
+            socket.connect(new InetSocketAddress(ip, 8000));   
             Affichage.Print("Sucessfully joined a game !");
 
         } catch (IOException e) {
@@ -43,22 +50,17 @@ public class Reseau {
         }
     }
 
-    public static String Message(){
-        try{
-            String message = Affichage.AskMessage();
-            Write(message);
-            return message;
-
-        } catch(IOException e){
-            Affichage.PrintError("Can't send message");
-        }
+    public static String Message() throws IOException{
+        String message = Affichage.AskMessage();
+        Write(message);
+        return message;
     }
 
-    public static void Write(String message){
+    public static void Write(String message) throws IOException{
         try{
             ByteBuffer buffer = ByteBuffer.wrap(message.getBytes("UTF-8"));
             while(buffer.hasRemaining()){
-                socket.Write(buffer);
+                socket.write(buffer);
             }
         }
         catch(UnsupportedEncodingException e){
@@ -88,7 +90,7 @@ public class Reseau {
 
     public void Close(){
         try{
-            socket.Close();
+            socket.close();
         }
         catch(IOException e){
             System.err.println("Could not close socket");
