@@ -42,7 +42,7 @@ public class Reseau {
         try {
             Affichage.Print("Joining a game at ip = " + ip + " ...");
             socket = SocketChannel.open();
-            socket.connect(new InetSocketAddress(ip, 8000));   
+            // socket.connect(new InetSocketAddress(ip, 8000));   
             Affichage.Print("Sucessfully joined a game !");
 
         } catch (IOException e) {

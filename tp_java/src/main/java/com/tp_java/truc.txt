@@ -1,5 +1,6 @@
 Launch :
 
+cd tp_java/src/main/java/com/tp_java/
 cd com/tp_java/
 javac affichage.java App.java jeu.java pion.java plateau.java reseau.java
 cd ../..

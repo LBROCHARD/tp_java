@@ -125,7 +125,8 @@ public class Affichage {
     }
 
     public static int AskColumn(){
-        Print("qu'elle colone voulez vous remplir ?");
+        Print("qu'elle colonne voulez vous remplir ?");
+        Print("*************************************");
 
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);

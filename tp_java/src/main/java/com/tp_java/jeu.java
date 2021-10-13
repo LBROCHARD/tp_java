@@ -60,11 +60,13 @@ public class Jeu {
 
         if (plateau.Victory() == true) {
             Affichage.Print("victoire !");
+            Affichage.ShowBoard();
 
         } else {
 
             if (plateau.isPlateauFull() == true ){
                 Affichage.Print("draw !");
+                Affichage.ShowBoard();
 
             } else {
                 if( color == "Yellow") {
