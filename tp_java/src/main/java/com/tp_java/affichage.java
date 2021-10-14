@@ -62,29 +62,25 @@ public class Affichage {
 
     }
 
-    public static int AskIP(){
+    public static String AskIP(){
         Affichage.Print("Enter the address to join :");
 
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         try {
-            int awnser =Integer.parseInt(br.readLine());  
+            String awnser = br.readLine();  
             return awnser;
-
-        } catch(NumberFormatException e) {
-            Affichage.PrintError("Awnser must be a number : " + e.getMessage() );
-            return MenueReseau();
 
         } catch(IOException e) {
             Affichage.PrintError("Error : " + e.getMessage() );
-            return MenueReseau();
+            return AskIP();
         }
 
     }
 
     public static String AskMessage(){
         try {
-            Print("<<");
+            Printf("<<");
             InputStreamReader isr = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(isr);
             String input = br.readLine();
