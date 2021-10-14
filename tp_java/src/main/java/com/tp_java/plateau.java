@@ -73,6 +73,8 @@ public class Plateau {
             return true;
         } else if (CheckDGD(lastcolor)){
             return true;
+        } else if (CheckDDG(lastcolor)){
+            return true;
         }
 
 
@@ -140,6 +142,10 @@ public class Plateau {
 
         for ( int i = 0 ; last_position_colonne + i < 8 ; i++ ) {
             Affichage.Printf( "[" + (last_position_ligne - i) + "] [" + (last_position_colonne + i) + "]" );
+            if (last_position_ligne - i < 0 ) {
+                Affichage.Print("nop break");
+                break;
+            }
             if (board[last_position_ligne - i ][last_position_colonne + i] == lastcolor ) {
                 in_a_row += 1;
                 Affichage.Print(" there is an " + lastcolor + " here !");
@@ -152,8 +158,12 @@ public class Plateau {
                 return true;
             }
         }
-        for ( int i = 1 ; last_position_colonne - i > 0; i++ ) {
+        for ( int i = 1 ; last_position_colonne - i >= 0; i++ ) {
             Affichage.Printf( "[" + (last_position_ligne + i) + "] [" + (last_position_colonne - i) + "]" );
+            if (last_position_ligne + i >= 6 ) {
+                Affichage.Print("nop break");
+                break;
+            }
             if (board[last_position_ligne + i][(last_position_colonne - i)] == lastcolor ) {
                 in_a_row += 1;
                 Affichage.Print(" there is an " + lastcolor + " here !");
@@ -167,6 +177,49 @@ public class Plateau {
             }
         }
         Affichage.Print("end dgd");
+        return false;
+    }
+
+    public Boolean CheckDDG(char lastcolor) {
+        int in_a_row = 0;
+
+        for ( int i = 0 ; last_position_colonne - i >= 0 ; i++ ) {
+            Affichage.Printf( "[" + (last_position_ligne - i) + "] [" + (last_position_colonne - i) + "]" );
+            if (last_position_ligne - i < 0 ) {
+                Affichage.Print("nop break");
+                break;
+            }
+            if (board[last_position_ligne - i ][last_position_colonne - i] == lastcolor ) {
+                in_a_row += 1;
+                Affichage.Print(" there is an " + lastcolor + " here !");
+                Affichage.Print("in a row = " + in_a_row);
+            } else {
+                Affichage.Print(" is a NULL or the other color here !");
+                break;
+            }
+            if (in_a_row == 4) {
+                return true;
+            }
+        }
+        for ( int i = 1 ; last_position_colonne + i < 8; i++ ) {
+            Affichage.Printf( "[" + (last_position_ligne + i) + "] [" + (last_position_colonne + i) + "]" );
+            if (last_position_ligne + i >= 6 ) {
+                Affichage.Print("nop break");
+                break;
+            }
+            if (board[last_position_ligne + i][(last_position_colonne + i)] == lastcolor ) {
+                in_a_row += 1;
+                Affichage.Print(" there is an " + lastcolor + " here !");
+                Affichage.Print("in a row = " + in_a_row);
+            } else {
+                Affichage.Print(" is a NULL or the other color here !");
+                return false;
+            }
+            if (in_a_row == 4) {
+                return true;
+            }
+        }
+        Affichage.Print("end ddg");
         return false;
     }
 
