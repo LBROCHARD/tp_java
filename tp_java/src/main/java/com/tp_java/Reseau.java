@@ -26,9 +26,9 @@ public class Reseau {
         try {
             Affichage.Print("Hosting a game ...");
             ServerSocketChannel serverSocket = ServerSocketChannel.open();
-            serverSocket.socket().bind(new InetSocketAddress(8000));
+            serverSocket.socket().bind(new InetSocketAddress(4004));
             SocketChannel socketChannel = serverSocket.accept();
-            Affichage.PrintError("Listening on chanell 8000");
+            Affichage.Print("Listening on chanell 4004");
 
 
         } catch (IOException e) {
@@ -38,11 +38,11 @@ public class Reseau {
     }
 
     private static void JoinGame(){
-        int ip = Affichage.AskIP();
+        String ip = Affichage.AskIP();
         try {
             Affichage.Print("Joining a game at ip = " + ip + " ...");
             socket = SocketChannel.open();
-            // socket.connect(new InetSocketAddress(ip, 8000));   
+            socket.connect(new InetSocketAddress(ip, 4004));   
             Affichage.Print("Sucessfully joined a game !");
 
         } catch (IOException e) {
