@@ -80,7 +80,7 @@ public class Affichage {
 
     public static String AskMessage(){
         try {
-            Print("<<");
+            Printf("<<");
             InputStreamReader isr = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(isr);
             String input = br.readLine();

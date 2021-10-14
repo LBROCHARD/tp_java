@@ -41,7 +41,6 @@ public class Jeu {
         if (rndm == 1) {
             return "Red";
 
-
         } else if (rndm == 2) {
             return "Yellow";
 
@@ -78,6 +77,63 @@ public class Jeu {
                 Tour();
             }
         }
+    }
+
+    public static void CreatePlateau() {
+        plateau = new Plateau();
+    }
+
+    public static int OnlineTour(int otherline) throws IOException{
+
+        if (otherline == 100)  {
+
+        } else {
+            plateau.FillColumn(otherline - 1);
+            Affichage.Print("The other player selected colomn " + otherline);
+            if( color == "Yellow") {
+                color = "Red";
+
+            } else {
+                color = "Yellow";
+            }
+        }
+
+        Affichage.ShowBoard();
+        int column = Affichage.AskColumn();
+        plateau.FillColumn(column - 1);
+        Affichage.ShowBoard();
+
+        if (plateau.Victory() == true) {
+
+            Affichage.ShowBoard();
+            Affichage.Print("***************");
+            Affichage.Print("***************");
+            Affichage.Print("   YOU WON !   ");
+            Affichage.Print("***************");
+            Affichage.Print("***************");
+            Reseau.Write("Victory");
+            Reseau.Close();
+
+
+        } else {
+
+            if (plateau.isPlateauFull() == true ){
+                Affichage.Print("draw !");
+                Affichage.ShowBoard();
+                Reseau.Write("Draw");
+                Reseau.Close();
+
+            } else {
+                if( color == "Yellow") {
+                    color = "Red";
+
+                } else {
+                    color = "Yellow";
+                }
+                return column;
+            }
+        }
+        return 0;
     }
 
 }

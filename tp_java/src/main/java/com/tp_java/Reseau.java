@@ -27,9 +27,34 @@ public class Reseau {
             Affichage.Print("Hosting a game ...");
             ServerSocketChannel serverSocket = ServerSocketChannel.open();
             serverSocket.socket().bind(new InetSocketAddress(4004));
-            SocketChannel socketChannel = serverSocket.accept();
+            socket = serverSocket.accept();
             Affichage.Print("Listening on chanell 4004");
 
+            Jeu.CreatePlateau();
+            String awnser = " " ;
+            while ( !awnser.equals("Quit")) {
+                awnser = Read();
+                if(awnser.equals("Quit")){
+                    break;
+                } else if (awnser.equals("Victory")){
+                    Affichage.Print("****************");
+                    Affichage.Print("****************");
+                    Affichage.Print("OTHER PLAYER WON");
+                    Affichage.Print("****************");
+                    Affichage.Print("****************");
+                    break;
+                } else if (awnser.equals("Draw")){
+                    Affichage.Print("DRAW !");
+                    break;
+                } 
+                Affichage.Print( ">>" + awnser);
+
+                int colomn = Jeu.OnlineTour(Integer.parseInt(awnser));
+                Write(String.valueOf(colomn));
+
+                // awnser = Message();
+            }
+            Close();
 
         } catch (IOException e) {
             Affichage.PrintError("Error while trying to host game");
@@ -44,6 +69,35 @@ public class Reseau {
             socket = SocketChannel.open();
             socket.connect(new InetSocketAddress(ip, 4004));   
             Affichage.Print("Sucessfully joined a game !");
+
+            Jeu.CreatePlateau();
+            String awnser = " " ;
+            int colomn = Jeu.OnlineTour(100);
+            Write(String.valueOf(colomn));
+
+            while ( !awnser.equals("Quit")) {
+                awnser = Read();
+                if(awnser.equals("Quit")){
+                    break;
+                } else if (awnser.equals("Victory")){
+                    Affichage.Print("****************");
+                    Affichage.Print("****************");
+                    Affichage.Print("OTHER PLAYER WON");
+                    Affichage.Print("****************");
+                    Affichage.Print("****************");
+                    break;
+                } else if (awnser.equals("Draw")){
+                    Affichage.Print("DRAW !");
+                    break;
+                }
+                Affichage.Print( ">>" + awnser);
+
+                colomn = Jeu.OnlineTour(Integer.parseInt(awnser));
+                Write(String.valueOf(colomn));
+
+                // awnser = Message();
+            }
+            Close();
 
         } catch (IOException e) {
             Affichage.PrintError("Error while trying to join game");
@@ -69,7 +123,7 @@ public class Reseau {
         
     }
 
-    public String Read(){
+    public static String Read(){
         ByteBuffer buffer = ByteBuffer.allocate(200);
         try {
             int bytesRead = socket.read(buffer);
@@ -88,7 +142,7 @@ public class Reseau {
         
     }
 
-    public void Close(){
+    public static void Close(){
         try{
             socket.close();
         }
@@ -97,4 +151,6 @@ public class Reseau {
         }
         
     }
+
+    
 }
