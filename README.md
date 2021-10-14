@@ -2,6 +2,10 @@
 
 Ce projet consiste en la création d'un puissance quatre. Ce puissance quatre peut etre joué en local ainsi qu'en ligne avec d'autres joueurs.
 
+# Mise en garde !
+
+Désolé d'avance pour la lisibilité du code qui a été finit tard le soir, on a mal géré, on a passé beaucoup trop de temps sur le linux et pas assez de temps sur le Java. Encore désolé, bonne chance.
+
 # 📝 Consignes et Fonctionnalités
 
 - Création d'un puissance quatre en java
